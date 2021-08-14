@@ -1,0 +1,20 @@
+.date{
+    color:black;
+}
+.main-container{
+    width: 100%;
+    background:ghostwhite;
+    text-align: center;
+}
+.footer-containder *{
+    margin:8px;
+    
+}
+.media-icons i{
+    padding:6px ;
+    border:1px solid black;
+    margin:6px;
+}
+.footer-container-1 *{
+    margin:5px;
+}
