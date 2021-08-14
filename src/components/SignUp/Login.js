@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 // import HeaderBackground from '../images/Loginimg.png'
 import './SignUp.css'
+import axios from 'axios'
 
 // const image = HeaderBackground;
 
@@ -8,15 +9,22 @@ import './SignUp.css'
 //     constructor(props) {
 //         super(props);
 //     }
-    
+    const ApiDomain='https://uenrlibrary.herokuapp.com/';
     const Login = (props) => {
-        const [details, setDetails] = useState({name: "", email: "", password: ""})
+        const [details, setDetails] = useState({email: "", password: ""})
         
 
         const submitHandler = e =>{
             e.preventDefault();
-        props.LoginProp(details);
-        }
+        axios.post((ApiDomain+'api/auth/login'))
+        .then(response=>{
+            console.log(response);
+        })
+        .catch(err=>{
+            console.log(`the erro is ${err}`);
+        })
+
+    }
 
     // useEffect(()=>{
     // console.log(props.LoginProp);
@@ -37,10 +45,6 @@ import './SignUp.css'
                     <i className='fas fa-user-circle'></i>
                     </div>
                     <div className="form">
-                        <div className="form-contain">
-                            <label htmlFor="username">| Username |</label><br/>
-                            <input type="text" name="username" placeholder="Username" onChange={e=> setDetails({...details, name: e.target.value})} value={details.name}/>
-                        </div>
                         <div className="form-contain">
                             <label htmlFor="email">| Email |</label><br/>
                             <input type="email" name="email" placeholder="Email" onChange={e=> setDetails({...details, email: e.target.value})} value={details.email} />
