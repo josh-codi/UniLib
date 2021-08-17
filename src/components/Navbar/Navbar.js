@@ -24,7 +24,7 @@ class Navbar extends Component {
         return(
             <div className="header">
             <nav className={this.state.clicked ? "NavbarItems NavbarItems-mobile-size" : " NavbarItems"}>
-                <h1 className="navbar-logo">UniLib <i className="fab fa-angular"> </i> </h1>
+                <h1 className="navbar-logo">UniLib <i className="fab fa-angular"></i> </h1>
 
                 <div className="menu-icon" onClick={this.handleClick}>                    
                     <i className = {`${this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}`}> </i>

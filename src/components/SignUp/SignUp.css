@@ -11,6 +11,7 @@
 .login-image{
     width: 100%;
 }
+.error{color:red}
 .content{
     background-color: rgb(222, 222, 238);
     width: 50%;

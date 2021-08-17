@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer'
 import About from './components/About/About'
 import Login from './components/SignUp/Login'
 import Checking from './components/Checking'
+import Register from './components/SignUp/Register';
 
 const App = () => {
 
@@ -20,7 +21,8 @@ const App = () => {
                     <Route path='/' exact component={Home}/>
                     <Route path='/home' component={Home}/>
                     <Route path="/about" component={About} />
-                    <Route path="/login" component={Login}/>
+                    <Route path="/register" component={Register}/>
+                    <Route path="/login" component={Checking}/>
                 </Switch>
             <Footer/>            
         </Router>

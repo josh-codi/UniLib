@@ -1,49 +1,59 @@
 import React, {useEffect, useState} from 'react'
-// import HeaderBackground from '../images/Loginimg.png'
 import './SignUp.css'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
-// const image = HeaderBackground;
 
-// export class Login extends React.Component {
-//     constructor(props) {
-//         super(props);
-//     }
-    const ApiDomain='https://uenrlibrary.herokuapp.com/';
-    const Login = (props) => {
-        const [details, setDetails] = useState({email: "", password: ""})
-        
+const ApiDomain='https://uenrlibrary.herokuapp.com/';
 
-        const submitHandler = e =>{
-            e.preventDefault();
-        axios.post((ApiDomain+'api/auth/login'))
-        .then(response=>{
-            console.log(response);
+const Login = (props) => {
+    useEffect(()=>{
+        // setError("");
+    },[])
+    //Setting useStates....................  
+    const [details, setDetails] = useState({'email': "", 'password': ""});      
+    var[res, setRes] = useState({});
+    // const[error, setError] = useState("");
+    
+    // Axios Post......Posting credentials................
+    const fetching =()=>{
+        axios.post((ApiDomain+'api/auth/login'),(details))
+        .then((response)=>{
+            // console.log('the response is : ',response);
+            setRes(response.data);  
         })
         .catch(err=>{
-            console.log(`the erro is ${err}`);
+            console.log(`the error is ${err}`);
+            // setError(err);
         })
-
     }
 
-    // useEffect(()=>{
-    // console.log(props.LoginProp);
-    // console.log(props.errorProp)
-    // },[]);
-
+    // submit handler
+    const submitHandler = e =>{            
+        e.preventDefault();
+        fetching();
+    }
+    const statusKey = JSON.stringify(res.status);
+    
     return (
         <form onSubmit={submitHandler}>
             <div className="contain">
+
+
                 <div className="login-header">
-                    <h3>Login</h3>
-                    {/* {props.errorProp} */}
-                    {(props.errorProp != "") ? (<div className="error">{props.errorProp}</div>) : ""}
+                    <h3>Login</h3> 
+                    {/* {(statusKey == 200)?(setError("")):(error)}            */}
                 </div>
+                {/* END OF LOGIN HEADER AND ERRO */}
+
+
                 <div className="content">
+
                     <div className="login-img">
-                    {/* <img className="login-image" src={image}></img> */}
-                    <i className='fas fa-user-circle'></i>
+                        <i className='fas fa-user-circle'></i>
                     </div>
+                    {/* END OF PROFILE ICON */}
+
                     <div className="form">
                         <div className="form-contain">
                             <label htmlFor="email">| Email |</label><br/>
@@ -54,11 +64,20 @@ import axios from 'axios'
                             <input type="password" name="password" placeholder="Password" onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
                         </div>
                     </div>
+                    {/* END OF FORM */}
+
                 </div>
+                {/* END OF FORM content */}
+                
+
+                {/* BUTTON FOR SUBMIT */}
                 <div className="submit-contain">
-                    <button type="submit" className="btn btn-primary">Login</button>
+                    <button type="submit" className="btn btn-primary" onClick={()=>props.stat(statusKey)}>Login</button>
                 </div>
+
+
             </div>
+            {/* END OF CONTAIN */}
             
         </form>
     )
