@@ -10,6 +10,7 @@
 body{
   margin:0;
   padding:0;
+  background:linear-gradient(tobottom,rgb(255, 255, 255),rgb(218, 218, 218));
 }
 .btn{
   margin:10px;

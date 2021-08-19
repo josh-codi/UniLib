@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react'
-import Login from './SignUp/Login'
-import Home from './Home/Home'
+import Login from './components/SignUp/Login'
+import Home from './components/Home/Home'
 
 const Checking = (top) => {
     useEffect(()=>{
@@ -12,7 +12,9 @@ const Checking = (top) => {
     const LogOut = ()=>{
         setStatus('');
     }
+
     return (
+        
         <div>
             {(status == 200) ? 
                 (<div className="welcome">
@@ -27,4 +29,3 @@ const Checking = (top) => {
 }
 
 export default Checking
-

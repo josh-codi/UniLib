@@ -4,7 +4,6 @@ import './Navbar.css'
 import {Button} from '../Button'
 import {Link} from 'react-router-dom'
 
-const image = "../images/headerBackground.png";
 
 // const STYLE={
 //     textDecoration:"none",
@@ -12,8 +11,7 @@ const image = "../images/headerBackground.png";
 // }
 class Navbar extends Component {
     state = {
-         clicked: false,
-         reduceHeight:true,
+         clicked: false
     }
     handleClick = () => {
          this.setState({clicked: !this.state.clicked })
@@ -24,7 +22,7 @@ class Navbar extends Component {
         return(
             <div className="header">
             <nav className={this.state.clicked ? "NavbarItems NavbarItems-mobile-size" : " NavbarItems"}>
-                <h1 className="navbar-logo">UniLib <i className="fab fa-angular"></i> </h1>
+               <h1 className="navbar-logo">UniLib <i className="fab fa-angular"></i> </h1>
 
                 <div className="menu-icon" onClick={this.handleClick}>                    
                     <i className = {`${this.state.clicked ? 'fas fa-times' : 'fas fa-bars'}`}> </i>
@@ -35,11 +33,11 @@ class Navbar extends Component {
                     {MenuItems.map((item, index)=>{
                         return(
                             <Link to={`/${item.title}`} className="lists" onClick={()=>this.setState({clicked:false})}>
-                            <li key={index} className={this.state.clicked ? 'flex' : 'none'}>
+                            <li key={index.toString()} className={this.state.clicked ? 'flex' : 'none'}>
                                 
-                                <a className={item.cName}>
+                                <p key={index.toString()} className={item.cName}>
                                     {item.title}
-                                </a>
+                                </p>
                             </li>
                             </Link>
                         )

@@ -1,4 +1,4 @@
-import {React, Component} from 'react'
+import {React} from 'react'
 import './Button.css'
 
 const STYLES = [
@@ -23,7 +23,7 @@ export const Button = ({
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0]
 
     return(
-        <button className={`btn ${checkbuttonStyle} ${checkButtonSize}`} onclick={onClick} type={type}>
+        <button className={`btn ${checkbuttonStyle} ${checkButtonSize}`} onClick={onClick} type={type}>
             {children}
         </button>
         

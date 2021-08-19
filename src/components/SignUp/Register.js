@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import './SignUp.css'
 
 const ApiDomain='https://uenrlibrary.herokuapp.com/';
 const Register = (props) => {
@@ -26,12 +28,14 @@ const Register = (props) => {
     const statusKey = JSON.stringify(res.status);
 
     return (
-        <div>
+        <div id="reg_cont">
+            <br/>
             <form onSubmit={submitHandler}>
             <div className="contain">
                 <div className="login-header">
                     <h3>Register</h3>  
-                    {statusKey}           
+                        {statusKey}
+                    <br/>     
                 </div>
                 {/* END OF REGISTER HEADER AND ERRO */}
 
@@ -51,7 +55,7 @@ const Register = (props) => {
                         <div className="form-contain">
                             <label htmlFor="password">| Password |</label><br/>
                             <input type="password" name="password" placeholder="Password" onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
-                            <p>Password must contain at least one upper case, a number ...</p>
+                            <p>Password must contain at least one upper case, a number<br/>...</p>
                         </div>
                     </div>
                     {/* END OF FORM */}
@@ -70,6 +74,12 @@ const Register = (props) => {
             {/* END OF CONTAIN */}
             
         </form>
+        <br/><br/>
+        Already having account, login here ...<br/>
+        <Link to="/login">
+           <button type="button" className="btn btn-primary">Login</button>
+        </Link> 
+        <br/><br/>
         </div>
     )
 }

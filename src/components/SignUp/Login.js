@@ -7,9 +7,7 @@ import {Link} from 'react-router-dom'
 const ApiDomain='https://uenrlibrary.herokuapp.com/';
 
 const Login = (props) => {
-    useEffect(()=>{
-        // setError("");
-    },[])
+    
     //Setting useStates....................  
     const [details, setDetails] = useState({'email': "", 'password': ""});      
     var[res, setRes] = useState({});
@@ -29,20 +27,26 @@ const Login = (props) => {
     }
 
     // submit handler
-    const submitHandler = e =>{            
+    const submitHandler = e =>{  
         e.preventDefault();
         fetching();
     }
     const statusKey = JSON.stringify(res.status);
     
+    useEffect(()=>{
+        
+    },[])
+
     return (
+        <div>
+            <br/>
         <form onSubmit={submitHandler}>
             <div className="contain">
 
 
                 <div className="login-header">
                     <h3>Login</h3> 
-                    {/* {(statusKey == 200)?(setError("")):(error)}            */}
+                    <br/>
                 </div>
                 {/* END OF LOGIN HEADER AND ERRO */}
 
@@ -80,6 +84,14 @@ const Login = (props) => {
             {/* END OF CONTAIN */}
             
         </form>
+        <br/><br/>
+        Not having an account, create one here ...<br/>
+        <Link to="/register">
+            <button type="button">Register</button>
+        </Link>
+        <br/><br/>
+
+        </div>
     )
     }
 

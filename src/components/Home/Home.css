@@ -1,33 +1,15 @@
 .home-main-container{
-    padding:50px;
-    width:70%;
+    /* padding:50px; */
+    width:100%;
     margin: auto;
+    text-align: center;
 }
-/* .obj{
-    margin:10px auto;
-    width: 47%;
-    height: 350px;
-    padding:10px;
-}
-.obj-container{
-    margin:auto;
-    display: flex;
-    border:5px solid green;
-}
-.obj .img-container{
-    border:8px solid pink;
-    height: 70%;
-    overflow: hidden;
-}
-.obj img{
-    width: 70%;
-} */
 
 .sec-1-inner{
     padding:5%;
-    color: rgb(170, 170, 170);
+    color: rgb(202, 202, 202);
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .sec-1-inner hr{

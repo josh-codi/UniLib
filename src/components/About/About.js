@@ -1,21 +1,21 @@
 import React from 'react'
 import HeaderBackground from '../images/HeaderBackground.png'
 import './About.css'
-import {Button} from '../Button'
-import {Link} from 'react-router-dom'
+// import {Button} from '../Button'
+// import {Link} from 'react-router-dom'
 
 
 const About = () => {
-    const style={
+    // const style={
         
-    }
+    // }
     return (
         <div>
             <section className="">
                 <br/><br/><br/>
                 <div className="row abt-container-1">
                     <div className="col-x-sm-8 col-sm-8 col-md-5 col-lg-5 abt-image">
-                        <img className="aboutImage" src={HeaderBackground}></img>
+                        <img className="aboutImage" src={HeaderBackground} alt={""}></img>
                     </div>
                     <div className="col-x-sm-8 col-sm-8 col-md-5 col-lg-5  abt-content">
                         <aside>
