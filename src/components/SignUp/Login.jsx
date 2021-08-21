@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { useHistory } from 'react-router-dom'
 import './SignUp.css'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
@@ -7,42 +8,39 @@ import {Link} from 'react-router-dom'
 const ApiDomain='https://uenrlibrary.herokuapp.com/';
 
 const Login = (props) => {
-    
-    //Setting useStates....................  
-    const [details, setDetails] = useState({'email': "", 'password': ""});      
-    var[res, setRes] = useState({});
-    // const[error, setError] = useState("");
-    
-    // Axios Post......Posting credentials................
-    const fetching =()=>{
-        axios.post((ApiDomain+'api/auth/login'),(details))
-        .then((response)=>{
-            // console.log('the response is : ',response);
-            setRes(response.data);  
-        })
-        .catch(err=>{
-            console.log(`the error is ${err}`);
-            // setError(err);
-        })
-    }
+    const history = useHistory();
 
-    // submit handler
+    //Setting useStates....................  
+    const [details, setDetails] = useState({email: "", password: ""});
+    const [invalid, setInvalid] = useState("");
+
+    useEffect(()=>{
+        if((localStorage.getItem('loginState'))){
+            history.push('/home')
+        }else{
+
+        }
+    },[]);
+
     const submitHandler = e =>{  
         e.preventDefault();
-        fetching();
-    }
-    const statusKey = JSON.stringify(res.status);
-    
-    useEffect(()=>{
-        
-    },[])
 
+        axios.post((ApiDomain+'api/auth/login'),(details))
+        .then((response)=>{
+            localStorage.setItem("loginState",JSON.stringify(response));
+            history.push("/home")
+
+        })
+        .catch(err=>{
+            setInvalid("Invalid Credentials");
+        })
+    }
+    
     return (
         <div>
             <br/>
         <form onSubmit={submitHandler}>
             <div className="contain">
-
 
                 <div className="login-header">
                     <h3>Login</h3> 
@@ -57,7 +55,7 @@ const Login = (props) => {
                         <i className='fas fa-user-circle'></i>
                     </div>
                     {/* END OF PROFILE ICON */}
-
+                    
                     <div className="form">
                         <div className="form-contain">
                             <label htmlFor="email">| Email |</label><br/>
@@ -66,6 +64,7 @@ const Login = (props) => {
                         <div className="form-contain">
                             <label htmlFor="password">| Password |</label><br/>
                             <input type="password" name="password" placeholder="Password" onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
+                            <p className="invalid">{invalid}</p>
                         </div>
                     </div>
                     {/* END OF FORM */}
@@ -76,7 +75,7 @@ const Login = (props) => {
 
                 {/* BUTTON FOR SUBMIT */}
                 <div className="submit-contain">
-                    <button type="submit" className="btn btn-primary" onClick={()=>props.stat(statusKey)}>Login</button>
+                    <button type="submit" className="btn btn-primary">Login</button>
                 </div>
 
 
@@ -89,7 +88,6 @@ const Login = (props) => {
         <Link to="/register">
             <button type="button">Register</button>
         </Link>
-        <br/><br/>
 
         </div>
     )

@@ -1,8 +1,7 @@
 import React from 'react'
 import HeaderBackground from '../images/HeaderBackground.png'
+import Navbar from '../Navbar/Navbar'
 import './About.css'
-// import {Button} from '../Button'
-// import {Link} from 'react-router-dom'
 
 
 const About = () => {
@@ -11,6 +10,7 @@ const About = () => {
     // }
     return (
         <div>
+            <Navbar />
             <section className="">
                 <br/><br/><br/>
                 <div className="row abt-container-1">

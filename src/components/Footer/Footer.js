@@ -1,15 +1,22 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import './Footer.css';
 
 const Footer = () => {
-    
-    
+    const [loged, setLoged] = useState(true);
+    useEffect(()=>{
+        if((localStorage.getItem("loginState"))){
+            setLoged(loged);
+        }else{
+            setLoged(!loged);
+        }
+    },[]);
     return (
-        <div className="main-container">
-            <section className="footer-container">
+        <div className="main-container">            
+                <section className="footer-container">
                 <br/>
                 <h2>UniLib <i className="fab fa-angular"></i></h2>
                 <br/>
+                {(loged) ? (<>
                 <div className="footer-container-1">
                 <h6>FAQ</h6>
                 <h6>BOOKS | CATEGORIES</h6>
@@ -23,6 +30,10 @@ const Footer = () => {
                     <i className="fab fa-pinterest"></i>
                     <i className="fab fa-twitter"></i>                    
                 </div>
+                </>
+                ) : (
+                <div></div>
+                )}
                 <br/>
                 <h6>TERMS AND CONDITIONS | PRIVACY <br/> LEGAL NOTICE</h6>
                 <br/>

@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import HomeBackground from '../images/homeBackground.png'
+import { useHistory } from 'react-router-dom'
 import './Home.css'
-import SignupContianer from '../../SignupContianer'
 import Categories from '../../Home_Content/Categories';
 import Daily from '../../Home_Content/DailyDisplay/Daily';
+import Navbar from '../Navbar/Navbar'
+import Register from '../SignUp/Register'
+import SignupContianer from '../../SignupContianer';
 
 
 const homeBack = HomeBackground;
@@ -18,12 +21,29 @@ const style_1={
 }
 
 const Home =()=>{
-    const [items, setItems] = useState([]);
+    const [open, setOpen] = useState(true);
+    useEffect(()=>{
+        if((localStorage.getItem("loginState"))){
+            setOpen(open);
+        }else(
+            setOpen(!open)
+        )
+    },[])
+    const history = useHistory();
+    
 
     return (
+        <>
+        <Navbar />
         <div className="home-main-container"><br/>
-
-            <section className="sec-1 row" style={style_1}>
+            {(open) ? 
+            (<div>
+                <Categories />
+                <br/><br/>
+                <Daily />
+            </div>) : 
+            (<div>
+                <section className="sec-1 row" style={style_1}>
                 <div className='sec-1-inner col-sm-12'>
 
                     <h2>Welcome to UniLib <i className="fab fa-angular"></i></h2>
@@ -37,12 +57,13 @@ const Home =()=>{
                     {<SignupContianer />}
                 </div>
             </section>
-            
-            <br/><br/>
-            <Categories />
+            </div>)
+            }
             <br/>
-            <Daily />
+            
+            <br/>
         </div>
+        </>
     )
 }
 

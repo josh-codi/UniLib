@@ -15,24 +15,21 @@
     color:rgba(109, 109, 109, 0.698);
 }
 .containe{
-    /* display: flex; */
     overflow-y:hidden;
     overflow-x: auto;
-    /* border-top:1px solid black; */
-    /* border-bottom:1px solid black; */
-    
+    border-right:0.1px solid rgba(0, 0, 0, 0.3);
 }
 .containe::-webkit-scrollbar{
     display: none;
 }
 .bookNumber{
     padding:2%;
-    border-radius:10px;
+    border-radius:20px;
     height: 100%;
     width: 20%;
     margin:15px;
     overflow: hidden;
-    box-shadow: 0px 0px 3px rgb(0,0,0,.5);
+    box-shadow: 0px 0px 10px 0.5px rgb(0,0,0,.3);
 }
 img{
     border-radius: 5px;
@@ -66,5 +63,7 @@ img{
         margin:13px;
         box-shadow: 0px 0px 4px rgb(0,0,0,.3);
     }
-    
+    .containe{
+        margin:0 5% 0 5%;
+    }
 }
