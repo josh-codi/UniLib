@@ -19,10 +19,10 @@ export const MenuItems = [
         url: "#",
         cName: "nav-links",
     },
-    {
-        title: "Logout",
-        url: "#",
-        cName: "nav-links-mobile",
-    },
+    // {
+    //     title: "Logout",
+    //     url: "#",
+    //     cName: "nav-links-mobile",
+    // },
 ]
 

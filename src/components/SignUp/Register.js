@@ -1,22 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import './SignUp.css'
+import VerifyEmail from '../../Home_Content/VerifyEmail'
 
-const ApiDomain='https://uenrlibrary.herokuapp.com/';
+
 const Register = (props) => {
-    const [details, setDetails] = useState({'email': "", 'password': ""});
-    const[error, setError] = useState(" ");
-    var[res, setRes] = useState({});
+
+    const history=useHistory();
+    useEffect(()=>{
+        if((localStorage.getItem("registerationState"))){
+            history.push('/verifyEmail');
+        }
+    })
+    const [details, setDetails] = useState({email: "", password: ""});    
 
     // Axios Post......Posting credentials................
     const fetching =()=>{
         axios.post(('https://uenrlibrary.herokuapp.com/api/auth/register'),(details))
         .then((response)=>{
-            console.log('the response is : ',response);
+            console.log(response);
+            localStorage.setItem("registrationState",(response));
+            history.push('/verifyEmail')
         })
         .catch(err=>{
-            console.log(`the erro is ${err}`);
+            console.log(err)
         })
     }
 
@@ -25,16 +33,16 @@ const Register = (props) => {
         fetching();
     }
 
-    const statusKey = JSON.stringify(res.status);
-
+    const style={
+        height:"100vh"
+    }
     return (
-        <div id="reg_cont">
+        <div id="reg_cont" style={style}>
             <br/>
             <form onSubmit={submitHandler}>
             <div className="contain">
                 <div className="login-header">
                     <h3>Register</h3>  
-                        {statusKey}
                     <br/>     
                 </div>
                 {/* END OF REGISTER HEADER AND ERRO */}
@@ -50,11 +58,11 @@ const Register = (props) => {
                     <div className="form">
                         <div className="form-contain">
                             <label htmlFor="email">| Email |</label><br/>
-                            <input type="email" name="email" placeholder="Email" onChange={e=> setDetails({...details, email: e.target.value})} value={details.email} />
+                            <input type="email" name="email" placeholder="Email" required onChange={e=> setDetails({...details, email: e.target.value})} value={details.email} />
                         </div>
                         <div className="form-contain">
                             <label htmlFor="password">| Password |</label><br/>
-                            <input type="password" name="password" placeholder="Password" onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
+                            <input type="password" name="password" placeholder="Password" required onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
                             <p>Password must contain at least one upper case, a number<br/>...</p>
                         </div>
                     </div>

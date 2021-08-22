@@ -27,17 +27,21 @@ const Login = (props) => {
 
         axios.post((ApiDomain+'api/auth/login'),(details))
         .then((response)=>{
+            console.log(response);
             localStorage.setItem("loginState",JSON.stringify(response));
             history.push("/home")
 
         })
         .catch(err=>{
+            console.log(err);
             setInvalid("Invalid Credentials");
         })
     }
-    
+    const style={
+        height:"100vh"
+    }
     return (
-        <div>
+        <div style={style}>
             <br/>
         <form onSubmit={submitHandler}>
             <div className="contain">
@@ -59,11 +63,11 @@ const Login = (props) => {
                     <div className="form">
                         <div className="form-contain">
                             <label htmlFor="email">| Email |</label><br/>
-                            <input type="email" name="email" placeholder="Email" onChange={e=> setDetails({...details, email: e.target.value})} value={details.email} />
+                            <input type="email" name="email" placeholder="Email" required onChange={e=> setDetails({...details, email: e.target.value})} value={details.email} />
                         </div>
                         <div className="form-contain">
                             <label htmlFor="password">| Password |</label><br/>
-                            <input type="password" name="password" placeholder="Password" onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
+                            <input type="password" name="password" placeholder="Password" required onChange={e=> setDetails({...details, password: e.target.value})} value={details.password} />
                             <p className="invalid">{invalid}</p>
                         </div>
                     </div>

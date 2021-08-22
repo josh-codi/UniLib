@@ -18,20 +18,20 @@ const Navbar =()=> {
         setClicked(!clicked);
      }
     
-     const logoutbutton ='Logout';
-        const history=useHistory();
-        useEffect(()=>{
-            if((localStorage.getItem("loginState"))){
-                setLoged(loged);
-            }else{
-                setLoged(!loged);
-            }
-        },[]);
-
-        const logout = ()=>{
-            localStorage.removeItem("loginState");
-            history.push("/login")
+    const logoutbutton ='login';
+    
+    
+    useEffect(()=>{
+        if((localStorage.getItem("loginState"))){
+            setLoged(loged);
+        }else{
+            setLoged(!loged);
         }
+    },[]);
+    let history=useHistory();
+    const logout = ()=>{
+        localStorage.removeItem("loginState");
+    }
 
         return(
             <>
@@ -48,18 +48,29 @@ const Navbar =()=> {
                     <ul className={(clicked) ? 'nav-menu active' : 'nav-menu'}>
                         {MenuItems.map((item, index)=>{
                             return(                                
-                                <Link to={(logoutbutton)?('/login'):(`/${item.title}`)} className="lists" onClick={()=>{setClicked(setBack);logout()}}>
+                                <Link to={(item.title == 'Logout')?(`/${logoutbutton}`):(`/${item.title}`)}
+                                 className="lists" 
+                                 onClick={()=>(item.title == "Logout")?(()=>logout()):(()=>setClicked(false))
+                                 }>
                                 <li key={index.toString()} className={(clicked) ? 'flex' : 'none'}>                                    
                                     <p key={index.toString()} className={item.cName}>
                                         {item.title}
                                     </p>
                                 </li>
                                 </Link>
+                                
                             )
                         })}
+                                <Link to="/login" onClick={logout}>
+                                <li className={(clicked) ? 'flex' : 'none'}>                                    
+                                <a className={"nav-links-mobile"}>
+                                    Logout
+                                </a>
+                                </li>
+                                </Link>
                     </ul>
                     {(loged) ? (
-                        (<Link to="/register" className="link-button">
+                        (<Link to="/login" className="link-button">
                             <Button className='button' onClick={logout}>Logout</Button>
                         </Link>)
                     ) : (<Link to="/register" className="link-button">

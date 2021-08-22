@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderBackground from '../images/HeaderBackground.png'
+import HeaderBackground from '../images/HeaderBackground.webp'
 import Navbar from '../Navbar/Navbar'
 import './About.css'
 

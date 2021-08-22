@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import HomeBackground from '../images/homeBackground.png'
+import HomeBackground from '../images/HeaderBackground.webp'
 import { useHistory } from 'react-router-dom'
 import './Home.css'
 import Categories from '../../Home_Content/Categories';
@@ -7,6 +7,7 @@ import Daily from '../../Home_Content/DailyDisplay/Daily';
 import Navbar from '../Navbar/Navbar'
 import Register from '../SignUp/Register'
 import SignupContianer from '../../SignupContianer';
+import Footer from '../Footer/Footer';
 
 
 const homeBack = HomeBackground;
@@ -63,6 +64,7 @@ const Home =()=>{
             
             <br/>
         </div>
+        <Footer/>
         </>
     )
 }

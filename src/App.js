@@ -6,6 +6,8 @@ import Footer from './components/Footer/Footer'
 import About from './components/About/About'
 import Register from './components/SignUp/Register';
 import Login from './components/SignUp/Login';
+import VerifyEmail from './Home_Content/VerifyEmail';
+// import BackgroundAnimation from './BackgroundAnimation';
 
 
 const App = () => {
@@ -13,8 +15,9 @@ const App = () => {
     return (        
         <div>
             
-                   
+             
         <Router>
+            
             
                 <Switch>
                     <Route path='/' exact component={Home}/>
@@ -22,10 +25,10 @@ const App = () => {
                     <Route path="/about" component={About} />
                     <Route path="/register" component={Register}/>
                     <Route path="/login" component={Login}/>
+                    <Route path="/verifyemail" component={VerifyEmail} />
                 </Switch>
                         
         </Router>
-        <Footer/>
         </div>
     );
     
