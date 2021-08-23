@@ -24,11 +24,6 @@
     text-shadow: 0px 0px 3px black;
 }
 
-.NavbarItems-mobile-size {
-    height: 100vh;
-    transition: 1s ease-in-out;
-}
-
 .NavbarItems-mobile-size li {
     padding-right: 6%;
 }
@@ -169,6 +164,10 @@
         text-decoration: none;
         color: rgb(44, 33, 33);
         font-size: 1.5rem;
+    }
+    .NavbarItems-mobile-size {
+        height: 100vh;
+        transition: 1s ease-in-out;
     }
     .nav-links-mobile:hover {
         background-color: white;
