@@ -16,7 +16,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-    transition: all 0.3s ease-out;
+    /* transition: all 0.2s ease-out; */
     padding-right: 10px;
 }
 
@@ -66,20 +66,20 @@
 .nav-links {
     color: #fff;
     text-decoration: none;
-    transition: 2s ease-in-out;
+    /* transition: 1s ease-in-out; */
     width: 120px;
     margin: auto;
 }
 
 .invalid {
     color: red;
-    transition: 2s ease-in-out;
+    transition: 1s ease-in-out;
 }
 
 .nav-links:hover {
     background: #c4c8ff;
     border-radius: 4px;
-    transition: all 0.2s ease-out;
+    /* transition: all 0.2s ease-out; */
 }
 
 .fa-bars {
@@ -112,14 +112,14 @@
         top: 80px;
         left: -100%;
         opacity: 1;
-        transition: all 0.5s ease;
+        /* transition: all 0.5s ease; */
     }
     .nav-menu.active {
         /* background: #6668f4; */
         background: transparent;
         left: 0;
         opacity: 1;
-        transition: all 0.5s ease;
+        /* transition: all 0.5s ease; */
         z-index: 1;
     }
     .nav-links {
@@ -167,12 +167,11 @@
     }
     .NavbarItems-mobile-size {
         height: 100vh;
-        transition: 1s ease-in-out;
     }
     .nav-links-mobile:hover {
         background-color: white;
         color: #6568f4;
-        transition: 250ms;
+        /* transition: 150ms; */
     }
     .link-button {
         display: none;
